@@ -7,3 +7,15 @@ var toDos = [
     'Tarefa 2',
     'Tarefa 3'
 ];
+
+function renderToDos() {
+    for(toDo of toDos) {
+        var toDoElement = document.createElement('li');
+        var toDoText = document.createTextNode(toDo);
+
+        toDoElement.appendChild(toDoText);
+        listElement.appendChild(toDoElement);
+    }
+}
+
+renderToDos();
