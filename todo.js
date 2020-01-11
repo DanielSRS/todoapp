@@ -2,11 +2,7 @@ var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
 var buttonElement = document.querySelector('#app button');
 
-var toDos = [
-    'Tarefa 1',
-    'Tarefa 2',
-    'Tarefa 3'
-];
+var toDos = JSON.parse(localStorage.getItem('toDo_List')) || [];
 
 function renderToDos() {
     listElement.innerHTML = '';
@@ -32,11 +28,17 @@ function addToDo(){
     toDos.push(toDoText);
     inputElement.value = '';
     renderToDos();
+    saveToStorage();
 }
 
 function deleteToDo(position) {
     toDos.splice(position, 1);
     renderToDos();
+    saveToStorage();
+}
+
+function saveToStorage() {
+    localStorage.setItem('toDo_List', JSON.stringify(toDos));
 }
 
 renderToDos();
